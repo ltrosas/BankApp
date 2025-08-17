@@ -5,8 +5,8 @@ using System.Runtime.CompilerServices;
 public class BankAccount
 {
     public Guid AccountId { get; private set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
     public string Address { get; set; }
     public decimal Balance { get; private set; }
 
@@ -14,7 +14,7 @@ public class BankAccount
     {
         AccountId = Guid.NewGuid();
         FirstName = firstName;
-        FirstName = lastName;
+        LastName = lastName;
         Address = address;
         Balance = 0;
     }
@@ -23,7 +23,7 @@ public class BankAccount
     {
         if (amount <= 0)
         {
-            throw new InvalidOperationException("Deposit amounts must be positive");
+            throw new ArgumentOutOfRangeException("Deposit amounts must be positive");
         }
 
         this.Balance += amount;
@@ -38,7 +38,7 @@ public class BankAccount
 
         if (amount <= 0)
         {
-            throw new InvalidOperationException("Withdraw amounts must be positive");
+            throw new ArgumentOutOfRangeException("Withdraw amounts must be positive");
         }
 
         this.Balance -= amount;
@@ -50,7 +50,7 @@ public class BankAccount
 
         if (targetAccount == null)
         {
-            throw new InvalidOperationException("Deposit account does not exist");
+            throw new ArgumentNullException("Target account does not exist");
         }
 
 
