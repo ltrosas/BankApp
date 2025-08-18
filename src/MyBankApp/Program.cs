@@ -1,11 +1,10 @@
-﻿var account = new BankAccount("Lucas", "Rosas", "1 Fake Street");
-
-bool running = true;
+﻿bool running = true;
 
 while (running)
 {
     Console.Clear();
     Console.WriteLine("=== My Bank ===");
+    Console.WriteLine("0) Create an Account");
     Console.WriteLine("1) Deposit");
     Console.WriteLine("2) Withdraw");
     Console.WriteLine("3) Show Balance");
@@ -16,6 +15,16 @@ while (running)
 
     switch (choice)
     {
+        case "0":
+            Console.Write("Enter first name: ");
+            string FirstNameString = Console.ReadLine();
+            Console.Write("Enter last name: ");
+            string LastNameString = Console.ReadLine();
+            Console.Write("Enter address: ");
+            string AddressString = Console.ReadLine();
+            var account = new BankAccount(FirstNameString, LastNameString, AddressString);
+            break;
+
         case "1":
             Console.Write("Enter amount: ");
             string DepositAmountString = Console.ReadLine();
